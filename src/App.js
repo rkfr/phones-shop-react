@@ -4,12 +4,18 @@ import { getAll, getById } from './api/phone';
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      phones: getAll(),
+    };
   }
 
   render() {
+    console.log(this.state.phones);
+    
+
     return (
-      <div classNameName="App">
+      <div className="App">
         <div className="container-fluid">
           <div className="row">
   
@@ -39,11 +45,13 @@ class App extends Component {
   
             <div className="col-md-10">
               <ul className="phones">
-              <li className="thumbnail">
-                  <a href="#!/phones/motorola-xoom-with-wi-fi" className="thumb">
+              {this.state.phones.map(phone => (
+                <li className="thumbnail">
+                  <a href={`#${phone.is}`} className="thumb">
                     <img 
-                      alt="Motorola XOOM™ with Wi-Fi" 
-                      src="img/phones/motorola-xoom-with-wi-fi.0.jpg" />
+                      alt={phone.name}
+                      src={phone.imageUrl}
+                    />
                   </a>
       
                   <div className="phones__btn-buy-wrapper">
@@ -53,13 +61,13 @@ class App extends Component {
                   </div>
       
                   <a href="#!/phones/motorola-xoom-with-wi-fi">
-                    Motorola XOOM™ with Wi-Fi
-                    </a>
+                    {phone.name}
+                  </a>
                   <p>
-                    The Next, Next Generation
-                    Experience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb).
+                    {phone.snippet}
                   </p>
-                </li>
+              </li>
+              ))}
               </ul>
             </div>
       </div>

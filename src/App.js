@@ -1,18 +1,22 @@
 import React, {Component} from 'react';
 import './App.css';
 import { getAll, getById } from './api/phone';
+import Basket from './components/Basket';
+import Filter from './components/Filter';
+import Catalog from './components/Catalog';
+import Viewer from './components/Viewer';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       phones: getAll(),
+      selectedPhone: null,
+      basketItems: []
     };
   }
 
   render() {
-    console.log(this.state.phones);
-    
 
     return (
       <div className="App">
@@ -20,61 +24,37 @@ class App extends Component {
           <div className="row">
   
             <div className="col-md-2">
-              <section>
-                <p>
-                  <input />
-                </p>
-      
-                <p>
-                  <select>
-                    <option value="name">Alphabetical</option>
-                    <option value="age">Newest</option>
-                  </select>
-                </p>
-              </section>
-      
-              <section>
-                <p>Shopping Cart</p>
-                <ul>
-                  <li>Phone 1</li>
-                  <li>Phone 2</li>
-                  <li>Phone 3</li>
-                </ul>
-              </section>
+              <Filter />
+              <Basket />
             </div>
   
             <div className="col-md-10">
-              <ul className="phones">
-              {this.state.phones.map(phone => (
-                <li className="thumbnail">
-                  <a href={`#${phone.is}`} className="thumb">
-                    <img 
-                      alt={phone.name}
-                      src={phone.imageUrl}
-                    />
-                  </a>
-      
-                  <div className="phones__btn-buy-wrapper">
-                    <a className="btn btn-success">
-                      Add
-                    </a>
-                  </div>
-      
-                  <a href="#!/phones/motorola-xoom-with-wi-fi">
-                    {phone.name}
-                  </a>
-                  <p>
-                    {phone.snippet}
-                  </p>
-              </li>
-              ))}
-              </ul>
+              { this.state.selectedPhone ? (
+                <Viewer 
+                  phone = {this.state.selectedPhone}
+                  onBack = {(() => {
+                    this.setState({
+                      selectedPhone: null
+                    })
+                  })}
+                />
+              ) : (
+                <Catalog 
+                  phones = {this.state.phones} 
+                  onPhoneSelected = {(phoneId) => {
+                    this.setState({
+                      selectedPhone: getById(phoneId)
+                    })
+                  }}
+                />
+              )}
+              
             </div>
-      </div>
+          </div>
         </div>
       </div>
     );
   }
-} 
+}
 
 export default App;

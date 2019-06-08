@@ -27,7 +27,11 @@ export default class Viewer extends React.Component {
         >
           Back
         </button>
-        <button>Add to basket</button>
+        <button
+          onClick={ () => {
+            this.props.addToBasket(this.props.phone.name)
+          }}
+        >Add to basket</button>
     
     
         <h1>{this.props.phone.name}</h1>

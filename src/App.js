@@ -16,9 +16,25 @@ class App extends Component {
     };
   }
 
+  removeFromBasket = idx => {
+    const {basketItems: phones} = this.state,
+      newPhones = phones.filter((el, i) => i !== idx);
+
+    this.setState({
+      basketItems: newPhones
+    });
+  }
+
+  addToBasket = data => {
+    const {basketItems} = this.state,
+      isBasketEmpty = (basketItems.length === 0);
+
+    this.setState({
+      basketItems: isBasketEmpty ? [data] : [...basketItems, data]
+    })
+  }
+
   render() {
-    console.log(this.state.basketItems);
-    
 
     return (
       <div className="App">
@@ -29,14 +45,7 @@ class App extends Component {
               <Filter />
               <Basket 
                 phones = {this.state.basketItems}
-                removeItem = {idx => {
-                  const {basketItems: phones} = this.state,
-                    newPhones = phones.filter((el, i) => i !== idx);
-
-                  this.setState({
-                    basketItems: newPhones
-                  });
-                }}
+                removeItem = {this.removeFromBasket}
               />
             </div>
   
@@ -44,6 +53,7 @@ class App extends Component {
               { this.state.selectedPhone ? (
                 <Viewer 
                   phone = {this.state.selectedPhone}
+                  addToBasket = {this.addToBasket}
                   onBack = {(() => {
                     this.setState({
                       selectedPhone: null
@@ -58,14 +68,7 @@ class App extends Component {
                       selectedPhone: getById(phoneId)
                     })
                   }}
-                  addToBasket = {data => {
-                    const {basketItems} = this.state,
-                      isBasketEmpty = (basketItems.length === 0);
-
-                    this.setState({
-                      basketItems: isBasketEmpty ? [data] : [...basketItems, data]
-                    })
-                  }}
+                  addToBasket = {this.addToBasket}
                 />
               )}
               

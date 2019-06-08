@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/phones-shop-react/static/css/main.95ac9038.chunk.css",
-    "main.js": "/phones-shop-react/static/js/main.47730a88.chunk.js",
-    "main.js.map": "/phones-shop-react/static/js/main.47730a88.chunk.js.map",
+    "main.js": "/phones-shop-react/static/js/main.8bb01c3b.chunk.js",
+    "main.js.map": "/phones-shop-react/static/js/main.8bb01c3b.chunk.js.map",
     "runtime~main.js": "/phones-shop-react/static/js/runtime~main.34c05d10.js",
     "runtime~main.js.map": "/phones-shop-react/static/js/runtime~main.34c05d10.js.map",
-    "static/js/2.65aa1cca.chunk.js": "/phones-shop-react/static/js/2.65aa1cca.chunk.js",
-    "static/js/2.65aa1cca.chunk.js.map": "/phones-shop-react/static/js/2.65aa1cca.chunk.js.map",
+    "static/js/2.6408f43b.chunk.js": "/phones-shop-react/static/js/2.6408f43b.chunk.js",
+    "static/js/2.6408f43b.chunk.js.map": "/phones-shop-react/static/js/2.6408f43b.chunk.js.map",
     "index.html": "/phones-shop-react/index.html",
-    "precache-manifest.4d5b6830f33038895fe65803cbf678f3.js": "/phones-shop-react/precache-manifest.4d5b6830f33038895fe65803cbf678f3.js",
+    "precache-manifest.ed4a32776b4661b3922e226c6f2e20c9.js": "/phones-shop-react/precache-manifest.ed4a32776b4661b3922e226c6f2e20c9.js",
     "service-worker.js": "/phones-shop-react/service-worker.js",
     "static/css/main.95ac9038.chunk.css.map": "/phones-shop-react/static/css/main.95ac9038.chunk.css.map"
   }

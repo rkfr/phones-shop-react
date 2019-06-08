@@ -1,8 +1,7 @@
 import React from 'react';
 
 const Catalog = props => {
-    console.log(props);
-    
+
     return (
         <ul className="phones">
             {props.phones.map(phone => (
@@ -20,7 +19,12 @@ const Catalog = props => {
                     </a>
                 
                     <div className="phones__btn-buy-wrapper">
-                        <a className="btn btn-success">
+                        <a 
+                            className="btn btn-success"
+                            onClick={ () => {
+                                props.addToBasket(phone.name)
+                            }}
+                        >
                             Add
                         </a>
                     </div>

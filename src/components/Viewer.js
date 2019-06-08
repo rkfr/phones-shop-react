@@ -1,29 +1,50 @@
 import React from 'react';
 
-const Viewer = props => (
-    <div>
-        <img className="phone" src={props.phone.images[0]} />
+
+export default class Viewer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      generalImage: this.props.phone.images[0],
+    }
+  }
+
+  changeImageHandler = src => {
+    this.setState({
+      generalImage: src
+    });
+  }
+
+  render() {
+
+    return (
+      <div>
+        <img className="phone" src={this.state.generalImage} />
     
         <button
-          onClick = {props.onBack}
+          onClick = {this.props.onBack}
         >
           Back
         </button>
         <button>Add to basket</button>
     
     
-        <h1>{props.phone.name}</h1>
+        <h1>{this.props.phone.name}</h1>
     
-        <p>{props.phone.description}</p>
+        <p>{this.props.phone.description}</p>
     
         <ul className="phone-thumbs">
-        {props.phone.images.map((imageUrl, idx) => (
+        {this.props.phone.images.map((imageUrl, idx) => (
           <li key={idx}>
-            <img src={imageUrl} />
+            <img 
+              src = {imageUrl}
+              onClick = {() => {this.changeImageHandler(imageUrl)}} 
+            />
           </li>
         ))}
         </ul>
     </div>
-);
-
-export default Viewer;
+    );
+  }
+}

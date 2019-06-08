@@ -17,6 +17,8 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.basketItems);
+    
 
     return (
       <div className="App">
@@ -25,7 +27,17 @@ class App extends Component {
   
             <div className="col-md-2">
               <Filter />
-              <Basket />
+              <Basket 
+                phones = {this.state.basketItems}
+                removeItem = {idx => {
+                  const {basketItems: phones} = this.state,
+                    newPhones = phones.filter((el, i) => i !== idx);
+
+                  this.setState({
+                    basketItems: newPhones
+                  });
+                }}
+              />
             </div>
   
             <div className="col-md-10">
@@ -41,9 +53,17 @@ class App extends Component {
               ) : (
                 <Catalog 
                   phones = {this.state.phones} 
-                  onPhoneSelected = {(phoneId) => {
+                  onPhoneSelected = {phoneId => {
                     this.setState({
                       selectedPhone: getById(phoneId)
+                    })
+                  }}
+                  addToBasket = {data => {
+                    const {basketItems} = this.state,
+                      isBasketEmpty = (basketItems.length === 0);
+
+                    this.setState({
+                      basketItems: isBasketEmpty ? [data] : [...basketItems, data]
                     })
                   }}
                 />

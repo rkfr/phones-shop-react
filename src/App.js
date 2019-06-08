@@ -32,6 +32,7 @@ class App extends Component {
     this.setState({
       basketItems: isBasketEmpty ? [data] : [...basketItems, data]
     })
+
   }
 
   render() {
@@ -64,8 +65,9 @@ class App extends Component {
                 <Catalog 
                   phones = {this.state.phones} 
                   onPhoneSelected = {phoneId => {
+                    
                     this.setState({
-                      selectedPhone: getById(phoneId)
+                      selectedPhone: getById(this.state.phones, phoneId)
                     })
                   }}
                   addToBasket = {this.addToBasket}

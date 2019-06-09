@@ -12,13 +12,15 @@ class App extends Component {
     this.state = {
       phones: getAll(),
       selectedPhone: null,
-      basketItems: []
+      basketItems: [],
+      sortBy: 'name'
     };
   }
 
-  removeFromBasket = idx => {
+  removeFromBasket = id => {
     const {basketItems: phones} = this.state,
-      newPhones = phones.filter((el, i) => i !== idx);
+      elementToRemove = phones.indexOf(id),
+      newPhones = phones.filter((el, i) => elementToRemove !== i);
 
     this.setState({
       basketItems: newPhones
@@ -32,18 +34,31 @@ class App extends Component {
     this.setState({
       basketItems: isBasketEmpty ? [data] : [...basketItems, data]
     })
+  }
 
+  setSortType = data => this.setState({sortBy: data});
+
+  setSortedCatalog = phones => this.setState({phones});
+
+  onBack = () => this.setState({selectedPhone: null});
+
+  onPhoneSelected = phoneId => {
+    this.setState({
+      selectedPhone: getById(this.state.phones, phoneId)
+    })
   }
 
   render() {
-
+    
     return (
       <div className="App">
         <div className="container-fluid">
           <div className="row">
   
             <div className="col-md-2">
-              <Filter />
+              <Filter 
+                setSortType = {this.setSortType}
+              />
               <Basket 
                 phones = {this.state.basketItems}
                 removeItem = {this.removeFromBasket}
@@ -55,25 +70,16 @@ class App extends Component {
                 <Viewer 
                   phone = {this.state.selectedPhone}
                   addToBasket = {this.addToBasket}
-                  onBack = {(() => {
-                    this.setState({
-                      selectedPhone: null
-                    })
-                  })}
+                  onBack = {this.onBack}
                 />
               ) : (
                 <Catalog 
                   phones = {this.state.phones} 
-                  onPhoneSelected = {phoneId => {
-                    
-                    this.setState({
-                      selectedPhone: getById(this.state.phones, phoneId)
-                    })
-                  }}
+                  onPhoneSelected = {this.onPhoneSelected}
                   addToBasket = {this.addToBasket}
+                  sortBy = {this.state.sortBy}
                 />
               )}
-              
             </div>
           </div>
         </div>

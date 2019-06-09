@@ -1,10 +1,17 @@
 import React from 'react';
+import {sortByAlpha, sortByNewest} from '../api/sort';
 
 const Catalog = props => {
 
+    const phones = [...props.phones],
+        sortedPhones = (props.sortBy === 'age') ?
+                        sortByNewest(phones)
+                        :
+                        sortByAlpha(phones);
+
     return (
         <ul className="phones">
-            {props.phones.map(phone => (
+            {sortedPhones.map(phone => (
                 <li className="thumbnail" key={phone.id}>
                     <a 
                         href={`#${phone.id}`} className="thumb"

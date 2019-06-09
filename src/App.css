@@ -3,6 +3,10 @@ body {
   background-color: lightgoldenrodyellow;
 }
 
+li {
+  list-style: none;
+}
+
 .phone-images {
   background-color: white;
   width: 450px;
@@ -102,4 +106,15 @@ ul.specs dt {
 
 h1 {
   border-bottom: 1px solid gray;
+}
+
+.basket__item {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.basket__item span,
+.basket__item button {
+  display: block;
 }

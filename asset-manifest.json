@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/phones-shop-react/static/css/main.95ac9038.chunk.css",
-    "main.js": "/phones-shop-react/static/js/main.50da7ed6.chunk.js",
-    "main.js.map": "/phones-shop-react/static/js/main.50da7ed6.chunk.js.map",
+    "main.css": "/phones-shop-react/static/css/main.21ab374f.chunk.css",
+    "main.js": "/phones-shop-react/static/js/main.f0f30faa.chunk.js",
+    "main.js.map": "/phones-shop-react/static/js/main.f0f30faa.chunk.js.map",
     "runtime~main.js": "/phones-shop-react/static/js/runtime~main.34c05d10.js",
     "runtime~main.js.map": "/phones-shop-react/static/js/runtime~main.34c05d10.js.map",
-    "static/js/2.de8ba4d2.chunk.js": "/phones-shop-react/static/js/2.de8ba4d2.chunk.js",
-    "static/js/2.de8ba4d2.chunk.js.map": "/phones-shop-react/static/js/2.de8ba4d2.chunk.js.map",
+    "static/js/2.0bc04413.chunk.js": "/phones-shop-react/static/js/2.0bc04413.chunk.js",
+    "static/js/2.0bc04413.chunk.js.map": "/phones-shop-react/static/js/2.0bc04413.chunk.js.map",
     "index.html": "/phones-shop-react/index.html",
-    "precache-manifest.db9b1c2f18db817e972585db1c8dc700.js": "/phones-shop-react/precache-manifest.db9b1c2f18db817e972585db1c8dc700.js",
+    "precache-manifest.151d43f1b827a05c3caf3904f336362a.js": "/phones-shop-react/precache-manifest.151d43f1b827a05c3caf3904f336362a.js",
     "service-worker.js": "/phones-shop-react/service-worker.js",
-    "static/css/main.95ac9038.chunk.css.map": "/phones-shop-react/static/css/main.95ac9038.chunk.css.map"
+    "static/css/main.21ab374f.chunk.css.map": "/phones-shop-react/static/css/main.21ab374f.chunk.css.map"
   }
 }

@@ -6,7 +6,7 @@ const Filter = props => {
         <section>
             <p>
                 Search:
-                <input />
+                <input onChange = {({target}) => props.setSearchWord(target.value)} />
             </p>
             <p>
                 Sort by:

@@ -13,7 +13,8 @@ class App extends Component {
       phones: getAll(),
       selectedPhone: null,
       basketItems: [],
-      sortBy: 'name'
+      sortBy: 'name',
+      searchWord: ''
     };
   }
 
@@ -42,10 +43,12 @@ class App extends Component {
 
   onBack = () => this.setState({selectedPhone: null});
 
+  setSearchWord = searchWord => this.setState({searchWord});
+
   onPhoneSelected = phoneId => {
     this.setState({
       selectedPhone: getById(this.state.phones, phoneId)
-    })
+    });
   }
 
   render() {
@@ -58,6 +61,7 @@ class App extends Component {
             <div className="col-md-2">
               <Filter 
                 setSortType = {this.setSortType}
+                setSearchWord = {this.setSearchWord}
               />
               <Basket 
                 phones = {this.state.basketItems}
@@ -78,6 +82,7 @@ class App extends Component {
                   onPhoneSelected = {this.onPhoneSelected}
                   addToBasket = {this.addToBasket}
                   sortBy = {this.state.sortBy}
+                  searchWord = {this.state.searchWord}
                 />
               )}
             </div>

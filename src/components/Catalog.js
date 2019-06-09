@@ -9,9 +9,12 @@ const Catalog = props => {
                         :
                         sortByAlpha(phones);
 
+    const phonesToShow = (!props.searchWord && sortedPhones) ||
+            sortedPhones.filter(phone => phone.name.toLowerCase().includes(props.searchWord.toLowerCase()));
+    
     return (
         <ul className="phones">
-            {sortedPhones.map(phone => (
+            {phonesToShow.map(phone => (
                 <li className="thumbnail" key={phone.id}>
                     <a 
                         href={`#${phone.id}`} className="thumb"

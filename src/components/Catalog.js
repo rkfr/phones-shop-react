@@ -1,59 +1,54 @@
 import React from 'react';
-import {sortByAlpha, sortByNewest} from '../api/sort';
+import { sortByAlpha, sortByNewest } from '../api/sort';
+import { SORT_BY_ALPHA } from '../constants';
 
-const Catalog = props => {
+const Catalog = ({
+  phones, sortBy, searchWord, onPhoneSelected, addToBasket,
+}) => {
+  const sortedPhones = (sortBy === SORT_BY_ALPHA)
+    ? sortByNewest(phones)
+    : sortByAlpha(phones);
 
-    const phones = [...props.phones],
-        sortedPhones = (props.sortBy === 'age') ?
-                        sortByNewest(phones)
-                        :
-                        sortByAlpha(phones);
+  const phonesToShow = (!searchWord && sortedPhones)
+            || sortedPhones.filter(({ name }) => name.toLowerCase().includes(searchWord.toLowerCase()));
 
-    const phonesToShow = (!props.searchWord && sortedPhones) ||
-            sortedPhones.filter(phone => phone.name.toLowerCase().includes(props.searchWord.toLowerCase()));
-    
-    return (
-        <ul className="phones">
-            {phonesToShow.map(phone => (
-                <li className="thumbnail" key={phone.id}>
-                    <a 
-                        href={`#${phone.id}`} className="thumb"
-                        onClick = { () => {
-                            props.onPhoneSelected(phone.id)
-                        }}
-                    >
-                        <img 
-                            alt={phone.name}
-                            src={phone.imageUrl}
-                        />
-                    </a>
-                
-                    <div className="phones__btn-buy-wrapper">
-                        <a 
-                            className="btn btn-success"
-                            onClick={ () => {
-                                props.addToBasket(phone.name)
-                            }}
-                        >
+  return (
+    <ul className="phones">
+      {phonesToShow.map(({
+        id, name, snippet, imageUrl,
+      }) => (
+        <li className="thumbnail" key={id}>
+          <a
+            href={`#${id}`}
+            className="thumb"
+            onClick={() => onPhoneSelected(id)}
+          >
+            <img
+              alt={name}
+              src={imageUrl}
+            />
+          </a>
+
+          <div className="phones__btn-buy-wrapper">
+            <a
+              className="btn btn-success"
+              onClick={() => addToBasket(name)}
+            >
                             Add
-                        </a>
-                    </div>
-                
-                    <a 
-                        href={`#${phone.id}`}
-                        onClick = { () => {
-                            props.onPhoneSelected(phone.id)
-                        }}
-                    >
-                        {phone.name}
-                    </a>
-                    <p>
-                        {phone.snippet}
-                    </p>
-                </li>
-            ))}
-        </ul>
-    );
+            </a>
+          </div>
+
+          <a
+            href={`#${id}`}
+            onClick={() => onPhoneSelected(id)}
+          >
+            {name}
+          </a>
+          <p>{snippet}</p>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default Catalog;

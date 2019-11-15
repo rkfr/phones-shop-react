@@ -1,120 +1,129 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+ul,
+li,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+/* button,
+input,
+a,
+select {
+  outline: none;
+} */
+
+a {
+  text-decoration: none;
+}
+
+html,
 body {
-  padding-top: 20px;
-  background-color: lightgoldenrodyellow;
+  font-size: 16px;
 }
 
 li {
   list-style: none;
 }
 
-.phone-images {
-  background-color: white;
-  width: 450px;
-  height: 450px;
-  overflow: hidden;
-  position: relative;
-  float: left;
+.app {
+  background-color: #f1f2f6;
+  font-family: 'Quattrocento Sans', sans-serif;
 }
 
-.phones {
-  list-style: none;
+/* select,
+option {
+  font-family: 'Quattrocento Sans', sans-serif;
+} */
+
+.header {
+  background-color: #fff;
 }
 
-.thumb {
-  float: left;
-  margin: -0.5em 1em 1.5em 0;
-  padding-bottom: 1em;
-  height: 100px;
-  width: 100px;
-}
-
-.phones__btn-buy-wrapper {
-  align-items: center;
-  float: right;
-  height: 100%;
+.header-wrapper {
   display: flex;
-  margin: 0 1em;
+  justify-content: center;
+  padding: 2rem;
 }
 
-.phones li {
-  clear: both;
-  height: 115px;
-  padding-top: 15px;
+.filter {
+  display: flex;
+  flex-basis: 50%;
+  justify-content: center;
 }
 
-/** Detail View **/
-img.phone {
-  float: left;
-  margin-right: 3em;
-  margin-bottom: 2em;
-  background-color: white;
-  padding: 2em;
-  height: 400px;
-  width: 400px;
-  display: none;
+.sorting-filter {
+  flex-basis: 180px;
+}
+.search-label {
+  flex-basis: 300px;
 }
 
-img.phone:first-child {
+.search {
   display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #dddada;
+  font-size: 1rem;
+  font-family: 'Quattrocento Sans', sans-serif;
 }
 
-
-ul.phone-thumbs {
-  margin: 0;
-  list-style: none;
+.search {
+  border-top-right-radius: 25px;  
+  border-bottom-right-radius: 25px;
+  height: 2.4rem;
+  border-left: 0;
 }
 
-ul.phone-thumbs li {
-  border: 1px solid black;
-  display: inline-block;
-  margin: 1em;
-  background-color: white;
+/* select */
+
+/* #f1f2f6
+#fd393a */
+
+/* option {
+  opacity: 0;
+  transition: 1s ease;
 }
 
-ul.phone-thumbs img {
-  height: 100px;
-  width: 100px;
-  padding: 1em;
+.box select {
+  background-color: #0563af;
+  color: #fff;
+  height: 2.4rem;
+  border: none;
+  font-size: 1rem;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
 }
 
-ul.phone-thumbs img:hover {
-  cursor: pointer;
+.box::before {
+  content: "\f13a";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
 }
 
-
-ul.specs {
-  clear: both;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-ul.specs > li{
-  display: inline-block;
-  width: 200px;
-  vertical-align: top;
-}
-
-ul.specs > li > span{
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-ul.specs dt {
-  font-weight: bold;
-}
-
-h1 {
-  border-bottom: 1px solid gray;
-}
-
-.basket__item {
-  background: rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.basket__item span,
-.basket__item button {
-  display: block;
-}
+.box select option {
+  padding: 30px;
+} */

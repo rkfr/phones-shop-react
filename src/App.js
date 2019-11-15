@@ -1,93 +1,104 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
+
 import { getAll, getById } from './api/phone';
+import { SORT_BY_ALPHA } from './constants';
+
 import Basket from './components/Basket';
 import Filter from './components/Filter';
 import Catalog from './components/Catalog';
 import Viewer from './components/Viewer';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      phones: getAll(),
-      selectedPhone: null,
-      basketItems: [],
-      sortBy: 'name',
-      searchWord: ''
-    };
+  state = {
+    phones: [],
+    selectedPhone: null,
+    basketItems: [],
+    searchWord: '',
+    sortBy: SORT_BY_ALPHA,
+  };
+
+
+  componentDidMount() {
+    this.setState({ phones: getAll() });
   }
 
-  removeFromBasket = id => {
-    const {basketItems: phones} = this.state,
-      elementToRemove = phones.indexOf(id),
-      newPhones = phones.filter((el, i) => elementToRemove !== i);
+  removeFromBasket = (id) => {
+    const { basketItems: phones } = this.state;
+    const elementToRemove = phones.indexOf(id);
 
     this.setState({
-      basketItems: newPhones
+      basketItems: phones.filter((_, i) => elementToRemove !== i),
     });
   }
 
-  addToBasket = data => {
-    const {basketItems} = this.state,
-      isBasketEmpty = (basketItems.length === 0);
+  addToBasket = (data) => {
+    const { basketItems } = this.state;
+    const isBasketEmpty = !basketItems.length;
 
     this.setState({
-      basketItems: isBasketEmpty ? [data] : [...basketItems, data]
-    })
+      basketItems: isBasketEmpty ? [data] : [...basketItems, data],
+    });
   }
 
-  setSortType = data => this.setState({sortBy: data});
+  setSortType = (sortType) => this.setState({ sortBy: sortType });
 
-  setSortedCatalog = phones => this.setState({phones});
+  setSortedCatalog = (phones) => this.setState({ phones });
 
-  onBack = () => this.setState({selectedPhone: null});
+  onBack = () => this.setState({ selectedPhone: null });
 
-  setSearchWord = searchWord => this.setState({searchWord});
+  setSearchWord = (searchWord) => this.setState({ searchWord });
 
-  onPhoneSelected = phoneId => {
+  onPhoneSelected = (phoneId) => {
+    const { phones } = this.state;
+
     this.setState({
-      selectedPhone: getById(this.state.phones, phoneId)
+      selectedPhone: getById(phones, phoneId),
     });
   }
 
   render() {
+    const {
+      basketItems, selectedPhone, phones, sortBy, searchWord,
+    } = this.state;
+
+    console.log(phones);
     
+
     return (
-      <div className="App">
-        <div className="container-fluid">
-          <div className="row">
-  
-            <div className="col-md-2">
-              <Filter 
-                setSortType = {this.setSortType}
-                setSearchWord = {this.setSearchWord}
-              />
-              <Basket 
-                phones = {this.state.basketItems}
-                removeItem = {this.removeFromBasket}
-              />
-            </div>
-  
-            <div className="col-md-10">
-              { this.state.selectedPhone ? (
-                <Viewer 
-                  phone = {this.state.selectedPhone}
-                  addToBasket = {this.addToBasket}
-                  onBack = {this.onBack}
-                />
-              ) : (
-                <Catalog 
-                  phones = {this.state.phones} 
-                  onPhoneSelected = {this.onPhoneSelected}
-                  addToBasket = {this.addToBasket}
-                  sortBy = {this.state.sortBy}
-                  searchWord = {this.state.searchWord}
-                />
-              )}
-            </div>
+      <div className="app">
+        <header className="header">
+          <div className="header-wrapper">
+            <Filter
+              sortBy={sortBy}
+              setSortType={this.setSortType}
+              setSearchWord={this.setSearchWord}
+            />
+            <Basket
+              phones={basketItems}
+              removeItem={this.removeFromBasket}
+            />
           </div>
-        </div>
+        </header>
+        <main className="main container">
+          <div className="">
+            { selectedPhone ? (
+              <Viewer
+                phone={selectedPhone}
+                addToBasket={this.addToBasket}
+                onBack={this.onBack}
+              />
+            ) : (
+              <Catalog
+                phones={phones}
+                onPhoneSelected={this.onPhoneSelected}
+                addToBasket={this.addToBasket}
+                sortBy={sortBy}
+                searchWord={searchWord}
+              />
+            )}
+          </div>
+        </main>
       </div>
     );
   }

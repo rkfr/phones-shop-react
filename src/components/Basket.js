@@ -1,14 +1,13 @@
 import React from 'react';
+import BasketIcon from './media/BasketIcon';
 
-const Basket = (props) => {
-  const { phones } = props;
+const Basket = ({ phones, removeItem }) => {
   const numOfphones = phones.reduce((acc, el) => (acc[el] && (acc[el]++) || (acc[el] = 1), acc), {});
 
   return (
     <section>
       <div>
-Shopping Cart items:
-        <span>{phones.length || 'basket is empty'}</span>
+        <BasketIcon basketColor="#ffffff" backgroundColor="#3e4144" counterBackground="#d12829" count={phones.length} />
       </div>
       <ul>
         {[...new Set(phones)].map((phone, idx) => (
@@ -21,7 +20,8 @@ Shopping Cart items:
 )
             </span>
             <button
-              onClick={() => { props.removeItem(phone); }}
+              type="button"
+              onClick={() => { removeItem(phone); }}
               className="removeButton"
             >
                         remove

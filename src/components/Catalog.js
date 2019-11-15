@@ -18,7 +18,7 @@ const Catalog = ({
         id, name, snippet, imageUrl,
       }) => (
         <li className="thumbnail" key={id}>
-          <a
+          <span
             href={`#${id}`}
             className="thumb"
             onClick={() => onPhoneSelected(id)}
@@ -27,23 +27,25 @@ const Catalog = ({
               alt={name}
               src={imageUrl}
             />
-          </a>
+          </span>
 
           <div className="phones__btn-buy-wrapper">
-            <a
+            <button
+              type="button"
               className="btn btn-success"
               onClick={() => addToBasket(name)}
             >
                             Add
-            </a>
+            </button>
           </div>
 
-          <a
+          <button
+            type="button"
             href={`#${id}`}
             onClick={() => onPhoneSelected(id)}
           >
             {name}
-          </a>
+          </button>
           <p>{snippet}</p>
         </li>
       ))}

@@ -2,13 +2,9 @@ import React from 'react';
 
 
 export default class Viewer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      generalImage: this.props.phone.images[0],
-    };
-  }
+  state = {
+    generalImage: this.props.phone.images[0],
+  };
 
   changeImageHandler = (src) => {
     this.setState({

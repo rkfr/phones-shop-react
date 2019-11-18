@@ -28,7 +28,8 @@ li {
 
 .app {
   background-color: #f1f2f6;
-  font-family: 'Quattrocento Sans', sans-serif;
+  /* font-family: 'Quattrocento Sans', sans-serif; */
+  font-family: 'Public Sans', sans-serif;
 }
 
 .container {
@@ -65,7 +66,8 @@ li {
   padding: 0.5rem 1rem;
   border: 1px solid #dddada;
   font-size: 1rem;
-  font-family: 'Quattrocento Sans', sans-serif;
+  /* font-family: 'Quattrocento Sans', sans-serif; */
+  font-family: 'Public Sans', sans-serif;
 }
 
 .search {
@@ -127,6 +129,7 @@ li {
 
 .product-card__product-name {
   font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .product-card .snippet {

@@ -18,13 +18,13 @@ const BasketIcon = ({
     top: '0',
     right: '0',
     transform: 'translate(10px, -9px)',
-    fontSize: '0.86rem',
+    fontSize: '0.81rem',
     backgroundColor: counterBackground,
     borderRadius: '50%',
     textAlign: 'center',
     width: '16px',
     height: '16px',
-    lineHeight: '1.4',
+    lineHeight: '1.3',
     color: basketColor,
   };
 

@@ -34,11 +34,11 @@ class App extends Component {
 
   addToBasket = (data) => {
     const { basketItems } = this.state;
-    const isBasketEmpty = !basketItems.length;
+    const currentBasketItems = JSON.parse(JSON.stringify(basketItems));
 
-    this.setState({
-      basketItems: isBasketEmpty ? [data] : [...basketItems, data],
-    });
+    currentBasketItems.push(data);
+
+    this.setState({ basketItems: currentBasketItems });
   }
 
   setSortType = (sortType) => this.setState({ sortBy: sortType });
@@ -62,9 +62,6 @@ class App extends Component {
       basketItems, selectedPhone, phones, sortBy, searchWord,
     } = this.state;
 
-    console.log(phones);
-    
-
     return (
       <div className="app">
         <header className="header">
@@ -75,14 +72,13 @@ class App extends Component {
               setSearchWord={this.setSearchWord}
             />
             <Basket
-              phones={basketItems}
+              basketItems={basketItems}
               removeItem={this.removeFromBasket}
             />
           </div>
         </header>
         <main className="main container">
-          <div className="">
-            { selectedPhone ? (
+          {/* { selectedPhone ? (
               <Viewer
                 phone={selectedPhone}
                 addToBasket={this.addToBasket}
@@ -96,8 +92,14 @@ class App extends Component {
                 sortBy={sortBy}
                 searchWord={searchWord}
               />
-            )}
-          </div>
+            )} */}
+          <Catalog
+            phones={phones}
+            onPhoneSelected={this.onPhoneSelected}
+            addToBasket={this.addToBasket}
+            sortBy={sortBy}
+            searchWord={searchWord}
+          />
         </main>
       </div>
     );

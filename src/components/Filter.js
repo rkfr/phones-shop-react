@@ -24,7 +24,7 @@ const Filter = ({ setSortType, setSearchWord, sortBy }) => {
       ...styles,
       backgroundColor: '#d12829',
     }),
-  }
+  };
 
   return (
     <form className="filter">
@@ -34,12 +34,12 @@ const Filter = ({ setSortType, setSearchWord, sortBy }) => {
         options={options}
         defaultValue={sortBy}
         setValue={sortBy}
-        placeholder='Sort by...'
+        placeholder="Sort by..."
         isSearchable={false}
         onChange={({ value }) => setSortType(value)}
       />
 
-      <label 
+      <label
         className="search-label"
         htmlFor="search"
       >

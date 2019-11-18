@@ -1,36 +1,25 @@
 import React from 'react';
 import BasketIcon from './media/BasketIcon';
+import ProductList from './ProductList';
 
-const Basket = ({ phones, removeItem }) => {
-  const numOfphones = phones.reduce((acc, el) => (acc[el] && (acc[el]++) || (acc[el] = 1), acc), {});
+const Basket = ({ basketItems, removeItem }) => (
+  <section>
+    <div>
+      <BasketIcon
+        containerClassName="basket__basket-icon"
+        basketColor="#ffffff"
+        counterBackground="#d12829"
+        count={basketItems.length}
+        basketWidth="21px"
+        basketHeight="21px"
+      />
+    </div>
 
-  return (
-    <section>
-      <div>
-        <BasketIcon basketColor="#ffffff" backgroundColor="#3e4144" counterBackground="#d12829" count={phones.length} />
-      </div>
-      <ul>
-        {[...new Set(phones)].map((phone, idx) => (
-          <li key={idx} className="basket__item">
-            <span>
-              {phone}
-              {' '}
-(x
-              {numOfphones[phone]}
-)
-            </span>
-            <button
-              type="button"
-              onClick={() => { removeItem(phone); }}
-              className="removeButton"
-            >
-                        remove
-            </button>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-};
+    <ProductList
+      productItems={basketItems}
+      removeItem={removeItem}
+    />
+  </section>
+);
 
 export default Basket;

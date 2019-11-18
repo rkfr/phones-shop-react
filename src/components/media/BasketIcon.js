@@ -1,17 +1,8 @@
 import React from 'react';
 
 const BasketIcon = ({
-  basketColor, backgroundColor, counterBackground, count,
+  basketColor, basketWidth, basketHeight, counterBackground, count, containerClassName,
 }) => {
-  const imageWrapperStyles = {
-    backgroundColor,
-    position: 'relative',
-    width: '36px',
-    height: '36px',
-    borderRadius: '50%',
-    cursor: 'pointer',
-  };
-
   const svgStyles = {
     position: 'absolute',
     top: 0,
@@ -38,8 +29,8 @@ const BasketIcon = ({
   };
 
   return (
-    <div style={imageWrapperStyles}>
-      <span style={counterStyles}>{count}</span>
+    <div className={containerClassName}>
+      {counterBackground && <span style={counterStyles}>{count}</span>}
       <svg
         style={svgStyles}
         version="1.1"
@@ -48,8 +39,8 @@ const BasketIcon = ({
         xmlnsXlink="http://www.w3.org/1999/xlink"
         x="0px"
         y="0px"
-        width="21px"
-        height="21px"
+        width={basketWidth}
+        height={basketHeight}
         viewBox="0 0 512 512"
         enableBackground="new 0 0 512 512"
         xmlSpace="preserve"

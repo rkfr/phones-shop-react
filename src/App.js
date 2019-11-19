@@ -16,6 +16,7 @@ class App extends Component {
     basketItems: [],
     searchWord: '',
     sortBy: SORT_BY_ALPHA,
+    showBasket: false,
   };
 
 
@@ -57,9 +58,11 @@ class App extends Component {
     });
   }
 
+  switchBasketVisibility = () => this.setState(({ showBasket }) => ({ showBasket: !showBasket }));
+
   render() {
     const {
-      basketItems, selectedPhone, phones, sortBy, searchWord,
+      basketItems, selectedPhone, phones, sortBy, searchWord, showBasket,
     } = this.state;
 
     return (
@@ -72,6 +75,8 @@ class App extends Component {
               setSearchWord={this.setSearchWord}
             />
             <Basket
+              showBasket={showBasket}
+              switchBasketVisibility={this.switchBasketVisibility}
               basketItems={basketItems}
               removeItem={this.removeFromBasket}
             />

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const BasketIcon = ({
-  basketColor, basketWidth, basketHeight, counterBackground, count, containerClassName,
+  basketColor, basketWidth, basketHeight, counterBackground, count, containerClassName, handleClick,
 }) => {
   const svgStyles = {
     position: 'absolute',
@@ -11,6 +11,7 @@ const BasketIcon = ({
     bottom: 0,
     margin: 'auto',
     transform: 'translateY(-1px)',
+    cursor: 'pointer',
   };
 
   const counterStyles = {
@@ -29,7 +30,13 @@ const BasketIcon = ({
   };
 
   return (
-    <div className={containerClassName}>
+    <div
+      className={containerClassName}
+      onClick={handleClick}
+      tabIndex="0"
+      role="button"
+      onKeyDown={handleClick}
+    >
       {counterBackground && <span style={counterStyles}>{count}</span>}
       <svg
         style={svgStyles}

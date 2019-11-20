@@ -1,0 +1,12 @@
+.basket {
+    position: relative;
+  }
+
+  .basket__basket-icon {
+    background-color: #3e4144;
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+  }

@@ -1,3 +1,5 @@
+import './ProductList.css';
+
 import React from 'react';
 import СrossIcon from '../../media/СrossIcon';
 import ProductItem from './ProductItem/ProductItem';

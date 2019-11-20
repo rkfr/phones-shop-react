@@ -1,3 +1,5 @@
+import './Basket.css';
+
 import React from 'react';
 import BasketIcon from '../media/BasketIcon';
 import ProductList from './ProductList/ProductList';

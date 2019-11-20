@@ -1,7 +1,9 @@
+import './Filter.css';
+
 import React from 'react';
 import Select from 'react-select';
 
-import { SORT_BY_ALPHA, SORT_BY_NEWEST } from '../constants';
+import { SORT_BY_ALPHA, SORT_BY_NEWEST } from '../../constants';
 
 const Filter = ({ setSortType, setSearchWord, sortBy }) => {
   const options = [

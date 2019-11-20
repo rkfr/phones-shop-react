@@ -1,5 +1,7 @@
+import './ProductCard.css';
+
 import React from 'react';
-import BasketIcon from './media/BasketIcon';
+import BasketIcon from '../../media/BasketIcon';
 
 const ProductCard = ({ phone, addToBasket }) => {
   const { imageUrl, name, snippet } = phone;

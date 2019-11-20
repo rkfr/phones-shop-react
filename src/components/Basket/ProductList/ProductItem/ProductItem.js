@@ -1,3 +1,5 @@
+import './ProductItem.css';
+
 import React from 'react';
 import CrossIcon from '../../../media/СrossIcon';
 import NumberField from './NumberField/NumberField';

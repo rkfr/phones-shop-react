@@ -1,0 +1,24 @@
+.product-list__item {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 1rem;
+    color: #3e4144;
+  }
+
+  .basket-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .basket-item__image {
+    max-width: 76px;
+    object-fit: contain;
+  }
+  
+  .basket-item__name {}
+  
+  .basket-item__remove {
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+  }

@@ -5,9 +5,9 @@ import { getAll, getById } from './api/phone';
 import { SORT_BY_ALPHA } from './constants';
 
 import Basket from './components/Basket/Basket';
-import Filter from './components/Filter';
-import Catalog from './components/Catalog';
-import Viewer from './components/Viewer';
+import Filter from './components/Filter/Filter';
+import Catalog from './components/Catalog/Catalog';
+import Viewer from './components/Viewer/Viewer';
 
 class App extends Component {
   state = {

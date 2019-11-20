@@ -1,18 +1,20 @@
 import React from 'react';
 
-const CloseIcon = ({ handleClick, className }) => {
+const CloseIcon = ({
+  handleClick, className, height = 32, width = 32, fill = '#000000',
+}) => {
   const style = {
     svg: {
       enableBackground: 'new 0 0 512 512',
-      height: 32,
-      width: 32,
+      height,
+      width,
+      fill,
     },
     st0: {
       display: 'inline',
     },
     st1: {
-      fill: 'none',
-      stroke: '#000000',
+      fill,
       strokeWidth: '16',
       strokeLinecap: 'round',
       strokeLine: 'join',

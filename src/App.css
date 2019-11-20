@@ -92,6 +92,24 @@ li {
   cursor: pointer;
 }
 
+.basket-item {
+  display: flex;
+  align-items: center;
+}
+
+.basket-item__image {
+  max-width: 76px;
+  object-fit: contain;
+}
+
+.basket-item__name {}
+
+.basket-item__remove {
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+}
+
 .catalog {
   display: flex;
   flex-wrap: wrap;
@@ -135,14 +153,18 @@ li {
   top: 30%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #fff;
+  background-color: #ffecde;
   z-index: 3;
   width: 50%;
   /* height: 60%; */
 }
 
+.product-list {
+  
+}
+
 .product-list__item {
-  background-color: #ffecde;
+  background-color: #fff;
   padding: 10px;
   margin-bottom: 1rem;
   color: #3e4144;

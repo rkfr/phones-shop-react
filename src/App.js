@@ -4,7 +4,7 @@ import './App.css';
 import { getAll, getById } from './api/phone';
 import { SORT_BY_ALPHA } from './constants';
 
-import Basket from './components/Basket';
+import Basket from './components/Basket/Basket';
 import Filter from './components/Filter';
 import Catalog from './components/Catalog';
 import Viewer from './components/Viewer';
@@ -37,7 +37,7 @@ class App extends Component {
     const { basketItems } = this.state;
     const currentBasketItems = JSON.parse(JSON.stringify(basketItems));
 
-    currentBasketItems.push(data);
+    currentBasketItems.push({ amount: 1, ...data });
 
     this.setState({ basketItems: currentBasketItems });
   }
@@ -60,10 +60,32 @@ class App extends Component {
 
   switchBasketVisibility = () => this.setState(({ showBasket }) => ({ showBasket: !showBasket }));
 
+  updateBasketItemAmount = (id, amount) => {
+    const { basketItems } = this.state;
+
+    if (!basketItems.length) return;
+
+    const item = basketItems.find(({ id: itemId }) => itemId === id);
+
+    if (item) {
+      const itemWithUpdatedAmount = { ...item, amount };
+      const newBasketItems = basketItems.filter(({ id: itemId }) => itemId !== id);
+      newBasketItems.push(itemWithUpdatedAmount);
+
+      console.log(basketItems[0].id === newBasketItems[0].id);
+
+
+      this.setState({ basketItems: newBasketItems });
+    }
+  }
+
   render() {
     const {
       basketItems, selectedPhone, phones, sortBy, searchWord, showBasket,
     } = this.state;
+
+    console.log(basketItems);
+
 
     return (
       <div className="app">
@@ -79,6 +101,7 @@ class App extends Component {
               switchBasketVisibility={this.switchBasketVisibility}
               basketItems={basketItems}
               removeItem={this.removeFromBasket}
+              updateBasketItemAmount={this.updateBasketItemAmount}
             />
           </div>
         </header>

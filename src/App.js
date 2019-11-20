@@ -65,18 +65,19 @@ class App extends Component {
 
     if (!basketItems.length) return;
 
-    const item = basketItems.find(({ id: itemId }) => itemId === id);
-
-    if (item) {
-      const itemWithUpdatedAmount = { ...item, amount };
-      const newBasketItems = basketItems.filter(({ id: itemId }) => itemId !== id);
-      newBasketItems.push(itemWithUpdatedAmount);
-
-      console.log(basketItems[0].id === newBasketItems[0].id);
+      const newBasketItems = basketItems.map((basketItem) => {
+        if (basketItem.id === id) {
+          return {
+            ...basketItem,
+            amount,
+          };
+        }
+        
+        return basketItem;
+      });
 
 
       this.setState({ basketItems: newBasketItems });
-    }
   }
 
   render() {

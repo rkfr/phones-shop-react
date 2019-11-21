@@ -55,7 +55,20 @@ class App extends Component {
     });
   }
 
-  switchBasketVisibility = () => this.setState(({ showBasket }) => ({ showBasket: !showBasket }));
+  toggleBodyOverflow = () => {
+    const { showBasket } = this.state;
+
+    if (!showBasket) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+  }
+
+  switchBasketVisibility = () => {
+    this.setState(({ showBasket }) => ({ showBasket: !showBasket }));
+    this.toggleBodyOverflow();
+  };
 
   updateBasketItemAmount = (id, amount) => {
     const { basketItems } = this.state;

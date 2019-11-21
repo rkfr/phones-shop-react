@@ -19,7 +19,7 @@ const CrossIcon = ({
     },
     st1: {
       fill,
-      strokeWidth: '16',
+      strokeWidth: '6',
       strokeLinecap: 'round',
       strokeLine: 'join',
       strokeMiterlimit: '10',

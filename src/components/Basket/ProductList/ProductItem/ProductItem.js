@@ -15,7 +15,7 @@ const ProductItem = ({
   const minusOne = () => {
     const amountNum = Number(amount);
 
-    if (amountNum) {
+    if (amountNum > 1) {
       updateBasketItemAmount(id, amountNum - 1);
     }
   };
@@ -24,20 +24,22 @@ const ProductItem = ({
 
   return (
     <li className="product-list__item basket-item">
-      <img src={imageUrl} alt={name} className="basket-item__image" />
-      <span className="basket-item__name">{name}</span>
-      <div>
-        <button type="button" onClick={minusOne}>-</button>
-        <label htmlFor={name}>
-          <input
-            type="text"
-            name={name}
-            value={amount}
-            pattern="[0-9]"
-            onChange={updateAmount}
-          />
-        </label>
-        <button type="button" onClick={addOne}>+</button>
+      <figure className="basket-item__content-wrapper">
+        <img src={imageUrl} alt={name} className="basket-item__image" />
+        <figcaption className="basket-item__name">{name}</figcaption>
+      </figure>
+      <div className="amount-control">
+        <button type="button" onClick={minusOne} className="amount-control__button">-</button>
+
+        <input
+          className="amount-control__input"
+          type="text"
+          name={name}
+          value={amount}
+          pattern="[0-9]"
+          onChange={updateAmount}
+        />
+        <button type="button" onClick={addOne} className="amount-control__button">+</button>
       </div>
       <CrossIcon
         className="basket-item__remove"

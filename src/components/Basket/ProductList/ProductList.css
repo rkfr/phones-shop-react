@@ -22,15 +22,26 @@
     z-index: 2;
 }
 
+.product-list {
+    overflow-x: auto;
+    height: 100%;
+}
+
 .product-list-wrapper {
     position: absolute;
-    padding: 25px;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ffecde;
+    padding: 100px 0 60px;
+    overflow: hidden;
+    background-color: #fff;
     z-index: 3;
-    width: 50%;
+    width: 60%;
+
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 300px;
+    max-height: 600px;
   }
 
 .close-product-list {

@@ -6,6 +6,8 @@ import BasketIcon from '../../media/BasketIcon';
 const ProductCard = ({ phone, addToBasket }) => {
   const { imageUrl, name, snippet } = phone;
 
+  const addPhone = () => addToBasket(phone);
+
   return (
     <li className="product-card">
       <figure className="product-card__figure">
@@ -20,12 +22,10 @@ const ProductCard = ({ phone, addToBasket }) => {
         <span className="snippet__text">{snippet}</span>
       </div>
       <div className="product-card__button-group">
-        <div
+        <button
+          type="button"
           className="product-card__basket"
-          role="button"
-          onClick={() => addToBasket(phone)}
-          onKeyDown={() => addToBasket(phone)}
-          tabIndex="0"
+          onClick={addPhone}
         >
           <span className="product-card__basket-text">Add</span>
           <BasketIcon
@@ -34,7 +34,7 @@ const ProductCard = ({ phone, addToBasket }) => {
             basketColor="#fff"
             containerClassName="product-card__basket-icon"
           />
-        </div>
+        </button>
         <button className="product-card__show-button" type="button">Show</button>
       </div>
     </li>

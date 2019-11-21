@@ -5,7 +5,7 @@ import BasketIcon from '../media/BasketIcon';
 import ProductList from './ProductList/ProductList';
 
 const Basket = ({
-  basketItems, removeItem, switchBasketVisibility, showBasket, updateBasketItemAmount,
+  basketItems, removeItemFromBasket, switchBasketVisibility, showBasket, updateBasketItemAmount,
 }) => (
   <section className="basket">
     <BasketIcon
@@ -22,7 +22,7 @@ const Basket = ({
       switchBasketVisibility={switchBasketVisibility}
       showBasket={showBasket}
       productItems={basketItems}
-      removeItem={removeItem}
+      removeItemFromBasket={removeItemFromBasket}
       updateBasketItemAmount={updateBasketItemAmount}
     />
   </section>

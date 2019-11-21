@@ -18,7 +18,7 @@ const Filter = ({ setSortType, setSearchWord, sortBy }) => {
       borderTopLeftRadius: '25px',
       borderBottomLeftRadius: '25px',
     }),
-    dropdownIndicator: (styles, state) => ({
+    dropdownIndicator: (styles) => ({
       ...styles,
       color: '#d12829',
     }),

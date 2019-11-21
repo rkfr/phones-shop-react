@@ -17,7 +17,7 @@ const Catalog = ({
 
   return (
     <ul className="catalog">
-      {phones.map((phone) => <ProductCard phone={phone} key={phone.id} addToBasket={addToBasket} />)}
+      {phonesToShow.map((phone) => <ProductCard phone={phone} key={phone.id} addToBasket={addToBasket} />)}
     </ul>
   );
 };

@@ -5,12 +5,15 @@ import СrossIcon from '../../media/СrossIcon';
 import ProductItem from './ProductItem/ProductItem';
 
 const ProductList = ({
-  productItems, showBasket, switchBasketVisibility, removeItem, updateBasketItemAmount,
+  productItems, showBasket, switchBasketVisibility, removeItemFromBasket, updateBasketItemAmount,
 }) => (
 
   <div className={showBasket ? 'basket-products basket-products--open overlay' : 'basket-products'}>
     <div className="product-list-wrapper">
-      <СrossIcon handleClick={switchBasketVisibility} className="close-product-list" />
+      <СrossIcon
+        handleClick={switchBasketVisibility}
+        className="close-product-list"
+      />
       <ul className="product-list">
         {productItems.map(({
           id, name, imageUrl, amount,
@@ -22,6 +25,7 @@ const ProductList = ({
             amount={amount}
             updateBasketItemAmount={updateBasketItemAmount}
             id={id}
+            removeItemFromBasket={removeItemFromBasket}
           />
         ))}
       </ul>

@@ -7,7 +7,7 @@ import { SORT_BY_ALPHA } from './constants';
 import Basket from './components/Basket/Basket';
 import Filter from './components/Filter/Filter';
 import Catalog from './components/Catalog/Catalog';
-import Viewer from './components/Viewer/Viewer';
+// import Viewer from './components/Viewer/Viewer';
 
 class App extends Component {
   state = {
@@ -24,13 +24,10 @@ class App extends Component {
     this.setState({ phones: getAll() });
   }
 
-  removeFromBasket = (id) => {
-    const { basketItems: phones } = this.state;
-    const elementToRemove = phones.indexOf(id);
+  removeItemFromBasket = (id) => {
+    const { basketItems: oldBasketItems } = this.state;
 
-    this.setState({
-      basketItems: phones.filter((_, i) => elementToRemove !== i),
-    });
+    this.setState({ basketItems: oldBasketItems.filter((item) => item.id !== id) });
   }
 
   addToBasket = (data) => {
@@ -65,28 +62,25 @@ class App extends Component {
 
     if (!basketItems.length) return;
 
-      const newBasketItems = basketItems.map((basketItem) => {
-        if (basketItem.id === id) {
-          return {
-            ...basketItem,
-            amount,
-          };
-        }
-        
-        return basketItem;
-      });
+    const newBasketItems = basketItems.map((basketItem) => {
+      if (basketItem.id === id) {
+        return {
+          ...basketItem,
+          amount,
+        };
+      }
+
+      return basketItem;
+    });
 
 
-      this.setState({ basketItems: newBasketItems });
+    this.setState({ basketItems: newBasketItems });
   }
 
   render() {
     const {
       basketItems, selectedPhone, phones, sortBy, searchWord, showBasket,
     } = this.state;
-
-    console.log(basketItems);
-
 
     return (
       <div className="app">
@@ -101,7 +95,7 @@ class App extends Component {
               showBasket={showBasket}
               switchBasketVisibility={this.switchBasketVisibility}
               basketItems={basketItems}
-              removeItem={this.removeFromBasket}
+              removeItemFromBasket={this.removeItemFromBasket}
               updateBasketItemAmount={this.updateBasketItemAmount}
             />
           </div>

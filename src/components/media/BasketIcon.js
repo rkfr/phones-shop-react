@@ -3,30 +3,31 @@ import React from 'react';
 const BasketIcon = ({
   basketColor, basketWidth, basketHeight, counterBackground, count, containerClassName, handleClick,
 }) => {
-  const svgStyles = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    margin: 'auto',
-    transform: 'translateY(-1px)',
-    cursor: 'pointer',
-  };
-
-  const counterStyles = {
-    position: 'absolute',
-    top: '0',
-    right: '0',
-    transform: 'translate(10px, -9px)',
-    fontSize: '0.81rem',
-    backgroundColor: counterBackground,
-    borderRadius: '50%',
-    textAlign: 'center',
-    width: '16px',
-    height: '16px',
-    lineHeight: '1.3',
-    color: basketColor,
+  const styles = {
+    svg: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      margin: 'auto',
+      transform: 'translateY(-1px)',
+      cursor: 'pointer',
+    },
+    counter: {
+      position: 'absolute',
+      top: '0',
+      right: '0',
+      transform: 'translate(10px, -9px)',
+      fontSize: '0.81rem',
+      backgroundColor: counterBackground,
+      borderRadius: '50%',
+      textAlign: 'center',
+      width: '16px',
+      height: '16px',
+      lineHeight: '1.3',
+      color: basketColor,
+    },
   };
 
   return (
@@ -37,9 +38,9 @@ const BasketIcon = ({
       role="button"
       onKeyDown={handleClick}
     >
-      {counterBackground && <span style={counterStyles}>{count}</span>}
+      {counterBackground && <span style={styles.counter}>{count}</span>}
       <svg
-        style={svgStyles}
+        style={styles.svg}
         version="1.1"
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"

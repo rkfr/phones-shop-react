@@ -6,27 +6,30 @@ import ProductList from './ProductList/ProductList';
 
 const Basket = ({
   basketItems, removeItemFromBasket, switchBasketVisibility, showBasket, updateBasketItemAmount,
-}) => (
-  <section className="basket">
-    <button className="basket__basket-icon" onClick={() => { switchBasketVisibility(); }} type="button">
-      <span className="basket__items-counter">{basketItems.length}</span>
-      <BasketIcon
-        basketColor="#ffffff"
-        counterBackground="#d12829"
-        basketWidth="21px"
-        basketHeight="21px"
+}) => {
+  const switchVisibility = () => switchBasketVisibility();
+
+  return (
+    <section className="basket">
+      <button className="basket__basket-icon" onClick={switchVisibility} type="button">
+        <span className="basket__items-counter">{basketItems.length}</span>
+        <BasketIcon
+          basketColor="#ffffff"
+          counterBackground="#d12829"
+          basketWidth="21px"
+          basketHeight="21px"
+        />
+      </button>
+
+
+      <ProductList
+        switchBasketVisibility={switchBasketVisibility}
+        showBasket={showBasket}
+        productItems={basketItems}
+        removeItemFromBasket={removeItemFromBasket}
+        updateBasketItemAmount={updateBasketItemAmount}
       />
-    </button>
-
-
-    <ProductList
-      switchBasketVisibility={switchBasketVisibility}
-      showBasket={showBasket}
-      productItems={basketItems}
-      removeItemFromBasket={removeItemFromBasket}
-      updateBasketItemAmount={updateBasketItemAmount}
-    />
-  </section>
-);
-
+    </section>
+  );
+};
 export default Basket;

@@ -59,9 +59,9 @@ class App extends Component {
     const { showBasket } = this.state;
 
     if (!showBasket) {
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('body-disabled');
     } else {
-      document.body.style.overflow = 'visible';
+      document.body.classList.remove('body-disabled');
     }
   }
 
@@ -130,6 +130,7 @@ class App extends Component {
               />
             )} */}
           <Catalog
+            basketItems={basketItems}
             phones={phones}
             onPhoneSelected={this.onPhoneSelected}
             addToBasket={this.addToBasket}

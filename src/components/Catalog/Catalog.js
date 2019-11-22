@@ -6,7 +6,7 @@ import { sortByAlpha, sortByNewest } from '../../api/sort';
 import { SORT_BY_ALPHA } from '../../constants';
 
 const Catalog = ({
-  phones, sortBy, searchWord, onPhoneSelected, addToBasket,
+  phones, sortBy, searchWord, basketItems, onPhoneSelected, addToBasket,
 }) => {
   const sortedPhones = (sortBy === SORT_BY_ALPHA)
     ? sortByNewest(phones)

@@ -1,12 +1,20 @@
 import './ProductCard.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 import BasketIcon from '../../media/BasketIcon';
 
 const ProductCard = ({ phone, addToBasket }) => {
+  const [isDisabled, toggleDisabled] = useState(false);
+
   const { imageUrl, name, snippet } = phone;
 
-  const addPhone = () => addToBasket(phone);
+  // console.log(phone);
+
+
+  const addPhone = () => {
+    addToBasket(phone);
+    toggleDisabled(true);
+  };
 
   return (
     <li className="product-card">
@@ -25,9 +33,12 @@ const ProductCard = ({ phone, addToBasket }) => {
         <button
           type="button"
           className="product-card__basket"
+          disabled={isDisabled}
           onClick={addPhone}
         >
-          <span className="product-card__basket-text">Add</span>
+          <span className="product-card__basket-text">
+            {isDisabled ? '✔' : 'Add'}
+          </span>
           <span className="product-card__basket-icon" role="img">
             <BasketIcon
               basketWidth="25px"

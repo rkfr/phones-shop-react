@@ -28,12 +28,14 @@ const ProductCard = ({ phone, addToBasket }) => {
           onClick={addPhone}
         >
           <span className="product-card__basket-text">Add</span>
-          <BasketIcon
-            basketWidth="25px"
-            basketHeight="25px"
-            basketColor="#fff"
-            containerClassName="product-card__basket-icon"
-          />
+          <span className="product-card__basket-icon" role="img">
+            <BasketIcon
+              basketWidth="25px"
+              basketHeight="25px"
+              basketColor="#fff"
+            />
+          </span>
+
         </button>
         <button className="product-card__show-button" type="button">Show</button>
       </div>

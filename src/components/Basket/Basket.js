@@ -8,15 +8,16 @@ const Basket = ({
   basketItems, removeItemFromBasket, switchBasketVisibility, showBasket, updateBasketItemAmount,
 }) => (
   <section className="basket">
-    <BasketIcon
-      handleClick={() => { switchBasketVisibility(); }}
-      containerClassName="basket__basket-icon"
-      basketColor="#ffffff"
-      counterBackground="#d12829"
-      count={basketItems.length}
-      basketWidth="21px"
-      basketHeight="21px"
-    />
+    <button className="basket__basket-icon" onClick={() => { switchBasketVisibility(); }} type="button">
+      <span className="basket__items-counter">{basketItems.length}</span>
+      <BasketIcon
+        basketColor="#ffffff"
+        counterBackground="#d12829"
+        basketWidth="21px"
+        basketHeight="21px"
+      />
+    </button>
+
 
     <ProductList
       switchBasketVisibility={switchBasketVisibility}

@@ -1,12 +1,29 @@
 .basket {
-    position: relative;
-  }
+  position: relative;
+}
 
-  .basket__basket-icon {
-    background-color: #3e4144;
-    position: relative;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
+.basket__basket-icon {
+  background-color: #3e4144;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.basket__items-counter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(23px, -5px);
+  font-size: .81rem;
+  background-color: #d12829;
+  border-radius: 50%;
+  text-align: center;
+  width: 16px;
+  height: 16px;
+  line-height: 1.3;
+  color: #fff;
+  outline: none;
+}

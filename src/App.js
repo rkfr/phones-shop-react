@@ -130,12 +130,12 @@ class App extends Component {
               />
             )} */}
           <Catalog
-            basketItems={basketItems}
             phones={phones}
             onPhoneSelected={this.onPhoneSelected}
             addToBasket={this.addToBasket}
             sortBy={sortBy}
             searchWord={searchWord}
+            basketItems={basketItems}
           />
         </main>
       </div>

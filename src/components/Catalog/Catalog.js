@@ -10,11 +10,9 @@ const Catalog = ({
   phones, sortBy, searchWord, addToBasket, basketItems,
   cardsPerPage, currentPage, updateCurrentPage, updateCardsPerPage,
 }) => {
-  const cardsLength = phones.length;
-  const allPages = Math.ceil(cardsLength / cardsPerPage);
-
-
-  const filterPhones = ({ name }) => name.toLowerCase().includes(searchWord.toLowerCase());
+  const sortedPhones = (sortBy === SORT_BY_ALPHA)
+    ? sortByNewest(phones)
+    : sortByAlpha(phones);
 
   const isItemInBasket = (itemId, items) => {
     if (!items.length) return false;
@@ -26,12 +24,17 @@ const Catalog = ({
     return !!items.find(({ id }) => id === itemId);
   };
 
-  const sortedPhones = (sortBy === SORT_BY_ALPHA)
-    ? sortByNewest(phones)
-    : sortByAlpha(phones);
+  const filterPhones = ({ name }) => name.toLowerCase().includes(searchWord.toLowerCase());
 
-  const phonesToShow = (!searchWord && sortedPhones) || sortedPhones.filter(filterPhones);
+  const filteredPhones = sortedPhones.filter(filterPhones);
+  const cardsLength = filteredPhones.length;
+  const allPages = Math.ceil(cardsLength / cardsPerPage);
 
+  const getPhonesToShow = () => {
+    const lastPhoneToShow = currentPage * cardsPerPage;
+    const firstPhoneToShow = lastPhoneToShow - cardsPerPage;
+    return ((!searchWord && sortedPhones) || filteredPhones).slice(firstPhoneToShow, lastPhoneToShow);
+  };
 
   return (
     <>
@@ -42,7 +45,7 @@ const Catalog = ({
         updateCardsPerPage={updateCardsPerPage}
       />
       <ul className="catalog">
-        {phonesToShow.map((phone) => (
+        {getPhonesToShow().map((phone) => (
           <ProductCard
             phone={phone}
             key={phone.id}

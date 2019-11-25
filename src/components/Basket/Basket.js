@@ -1,34 +1,25 @@
 import './Basket.css';
 
 import React from 'react';
-import BasketIcon from '../media/BasketIcon';
 import ProductList from './ProductList/ProductList';
+import BasketButtonWithCounter from '../media/BasketButtonWithCounter';
 
-const Basket = ({
-  basketItems, removeItemFromBasket, switchBasketVisibility, showBasket, updateBasketItemAmount,
-}) => {
+const Basket = ({ ...props }) => {
+  const { basketItems, switchBasketVisibility } = props;
   const switchVisibility = () => switchBasketVisibility();
 
   return (
     <section className="basket">
-      <button className="basket__basket-icon" onClick={switchVisibility} type="button">
-        <span className="basket__items-counter">{basketItems.length}</span>
-        <BasketIcon
-          basketColor="#ffffff"
-          counterBackground="#d12829"
-          basketWidth="21px"
-          basketHeight="21px"
-        />
-      </button>
-
-
-      <ProductList
-        switchBasketVisibility={switchBasketVisibility}
-        showBasket={showBasket}
-        productItems={basketItems}
-        removeItemFromBasket={removeItemFromBasket}
-        updateBasketItemAmount={updateBasketItemAmount}
+      <BasketButtonWithCounter
+        switchVisibility={switchVisibility}
+        length={basketItems.length}
+        basketColor="#ffffff"
+        counterBackground="#d12829"
+        basketWidth="21px"
+        basketHeight="21px"
       />
+
+      <ProductList {...props} />
     </section>
   );
 };

@@ -6,13 +6,13 @@ import ProductItem from './ProductItem/ProductItem';
 import EmptyBasket from './EmptyBasket/EmptyBasket';
 
 const ProductList = ({
-  productItems, showBasket, switchBasketVisibility, removeItemFromBasket, updateBasketItemAmount,
+  basketItems, showBasket, switchBasketVisibility, removeItemFromBasket, updateBasketItemAmount,
 }) => {
-  const isBasketEmpty = !productItems.length;
+  const isBasketEmpty = !basketItems.length;
 
   const renderList = () => (
     <ul className="product-list">
-      {productItems.map(({
+      {basketItems.map(({
         id, name, imageUrl, amount,
       }) => (
         <ProductItem

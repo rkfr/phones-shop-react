@@ -1,13 +1,12 @@
 import './ProductCard.css';
 
 import React from 'react';
-import BasketIcon from '../../media/BasketIcon';
+import AddButton from './AddButton/AddButton';
 
 const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
   const { imageUrl, name, snippet } = phone;
 
   const addPhone = () => addToBasket(phone);
-
 
   return (
     <li className="product-card">
@@ -23,24 +22,13 @@ const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
         <span className="snippet__text">{snippet}</span>
       </div>
       <div className="product-card__button-group">
-        <button
-          type="button"
-          className="product-card__basket"
-          disabled={isItemInBasket}
-          onClick={addPhone}
-        >
-          <span className="product-card__basket-text">
-            {isItemInBasket ? '✔' : 'Add'}
-          </span>
-          <span className="product-card__basket-icon" role="img">
-            <BasketIcon
-              basketWidth="25px"
-              basketHeight="25px"
-              basketColor="#fff"
-            />
-          </span>
-
-        </button>
+        <AddButton
+          isItemInBasket={isItemInBasket}
+          addPhone={addPhone}
+          basketWidth="25px"
+          basketHeight="25px"
+          basketColor="#fff"
+        />
         <button className="product-card__show-button" type="button">Show</button>
       </div>
     </li>

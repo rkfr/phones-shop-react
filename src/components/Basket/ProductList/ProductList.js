@@ -1,7 +1,7 @@
 import './ProductList.css';
 
 import React from 'react';
-import СrossIcon from '../../media/СrossIcon';
+import CrossIcon from '../../media/СrossIcon';
 import ProductItem from './ProductItem/ProductItem';
 import EmptyBasket from './EmptyBasket/EmptyBasket';
 
@@ -31,7 +31,7 @@ const ProductList = ({
   return (
     <div className={showBasket ? 'basket-products basket-products--open overlay' : 'basket-products'}>
       <div className="product-list-wrapper">
-        <СrossIcon
+        <CrossIcon
           handleClick={switchBasketVisibility}
           className="close-product-list"
         />

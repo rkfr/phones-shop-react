@@ -7,7 +7,7 @@ const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
   const { imageUrl, name, snippet } = phone;
 
   const addPhone = () => addToBasket(phone);
-  
+
 
   return (
     <li className="product-card">

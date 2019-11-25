@@ -12,11 +12,14 @@ import Catalog from './components/Catalog/Catalog';
 class App extends Component {
   state = {
     phones: [],
-    selectedPhone: null,
+    // selectedPhone: null,
     basketItems: [],
     searchWord: '',
     sortBy: SORT_BY_ALPHA,
     showBasket: false,
+
+    currentPage: 1,
+    cardsPerPage: 6,
   };
 
 
@@ -47,13 +50,13 @@ class App extends Component {
 
   setSearchWord = (searchWord) => this.setState({ searchWord });
 
-  onPhoneSelected = (phoneId) => {
-    const { phones } = this.state;
+  // onPhoneSelected = (phoneId) => {
+  //   const { phones } = this.state;
 
-    this.setState({
-      selectedPhone: getById(phones, phoneId),
-    });
-  }
+  //   this.setState({
+  //     selectedPhone: getById(phones, phoneId),
+  //   });
+  // }
 
   toggleBodyOverflow = () => {
     const { showBasket } = this.state;
@@ -90,9 +93,13 @@ class App extends Component {
     this.setState({ basketItems: newBasketItems });
   }
 
+  updateCurrentPage = (newPage) => this.setState({ currentPage: newPage });
+
+  updateCardsPerPage = (newCardsCount) => this.setState({ cardsPerPage: newCardsCount });
+
   render() {
     const {
-      basketItems, selectedPhone, phones, sortBy, searchWord, showBasket,
+      basketItems, phones, sortBy, searchWord, showBasket, currentPage, cardsPerPage,
     } = this.state;
 
     return (
@@ -136,6 +143,10 @@ class App extends Component {
             sortBy={sortBy}
             searchWord={searchWord}
             basketItems={basketItems}
+            cardsPerPage={cardsPerPage}
+            currentPage={currentPage}
+            updateCurrentPage={this.updateCurrentPage}
+            updateCardsPerPage={this.updateCardsPerPage}
           />
         </main>
       </div>

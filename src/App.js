@@ -110,6 +110,7 @@ class App extends Component {
               sortBy={sortBy}
               setSortType={this.setSortType}
               setSearchWord={this.setSearchWord}
+              updateCurrentPage={this.updateCurrentPage}
             />
             <Basket
               showBasket={showBasket}

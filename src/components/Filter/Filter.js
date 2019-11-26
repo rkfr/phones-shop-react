@@ -5,7 +5,9 @@ import Select from 'react-select';
 
 import { SORT_BY_ALPHA, SORT_BY_NEWEST } from '../../constants';
 
-const Filter = ({ setSortType, setSearchWord, sortBy }) => {
+const Filter = ({
+  setSortType, setSearchWord, sortBy, updateCurrentPage,
+}) => {
   const options = [
     { value: SORT_BY_ALPHA, label: 'Alphabetical' },
     { value: SORT_BY_NEWEST, label: 'Newest' },
@@ -28,6 +30,13 @@ const Filter = ({ setSortType, setSearchWord, sortBy }) => {
     }),
   };
 
+  const onSearch = ({ target }) => {
+    setSearchWord(target.value);
+    updateCurrentPage(1);
+  };
+
+  const onSort = ({ value }) => setSortType(value);
+
   return (
     <form className="filter">
       <Select
@@ -38,7 +47,7 @@ const Filter = ({ setSortType, setSearchWord, sortBy }) => {
         setValue={sortBy}
         placeholder="Sort by..."
         isSearchable={false}
-        onChange={({ value }) => setSortType(value)}
+        onChange={onSort}
       />
 
       <label
@@ -49,7 +58,7 @@ const Filter = ({ setSortType, setSearchWord, sortBy }) => {
           id="search"
           className="search"
           placeholder="Search..."
-          onChange={({ target }) => setSearchWord(target.value)}
+          onChange={onSearch}
         />
       </label>
     </form>

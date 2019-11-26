@@ -2,21 +2,126 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 30px;
 }
 
 .pagination__controls {
     display: flex;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .pages-list {
     display: flex;
+    align-items: center;
+    flex-basis: 200px;
+    justify-content: space-around;
 }
 
+/* buttons start */
+.pagination__button {
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    width: 46px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+}
+
+.pagination__button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    border-left: 1.2px solid #3e4144;
+    border-bottom: 1.2px solid #3e4144;
+    width: 10px;
+    height: 10px;
+    
+}
+
+.pagination__button--next::after {
+    transform: translate(-62%, -50%) rotate(-135deg);
+}
+
+
+.pagination__button--prev::after {
+    transform: translate(-38%, -50%) rotate(45deg);
+}
+
+.pagination__button--first::before,
+.pagination__button--last::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    display: block;
+    border-left: 1.2px solid #3e4144;
+    border-bottom: 1.2px solid #3e4144;
+    width: 8px;
+    height: 8px;
+}
+
+.pagination__button--first::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.pagination__button--last::after {
+    transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.pagination__button--first::before {
+    left: 62%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.pagination__button--last::before {
+    left: 40%;
+    transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.pagination__button--prev:hover,
+.pagination__button--first:hover {
+    animation: .5s slideLeft;
+}
+
+.pagination__button--next:hover,
+.pagination__button--last:hover {
+    animation: .5s slideRight;
+}
+
+@keyframes slideLeft {
+    0%, 100% {
+      transform: translateX(0); }
+    50% {
+      transform: translateX(-3px); 
+    } 
+}
+
+@keyframes slideRight {
+    0%, 100% {
+      transform: translateX(0); }
+    50% {
+      transform: translateX(3px); 
+    } 
+}
+/* buttons end */
+
 .pages-list__item {
-    border: 1px solid rgb(134, 134, 134);
-    padding: 5px 8px;
+    border: none;
+    text-align: center;
+    background-color: transparent;
+    color: #3e4144;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 1rem;
 }
 
 .current-item {
-    background-color: rgb(110, 78, 78);
+    background-color: #3e4144;
+    color: #fff;
+    border: 1px solid #3e4144;
+    padding: 0 4px;
 }
+

@@ -11,6 +11,17 @@ const Pagination = ({
     { value: 9, label: 9 },
   ];
 
+  const selectCustomStyles = {
+    container: (state) => ({
+      ...state,
+      width: '80px',
+    }),
+    control: (state) => ({
+      ...state,
+      paddingLeft: '7px',
+    }),
+  };
+
   const onLastPage = () => updateCurrentPage(allPages);
 
   const onFirstPage = () => updateCurrentPage(1);
@@ -50,16 +61,18 @@ const Pagination = ({
   return (
     <div className="pagination">
       <div className="pagination__controls">
-        <button type="button" onClick={onFirstPage}>start</button>
-        <button type="button" onClick={onPrevPage}>prev</button>
+        <button type="button" aria-label="First page" onClick={onFirstPage} className="pagination__button pagination__button--first" />
+        <button type="button" aria-label="Previous page" onClick={onPrevPage} className="pagination__button pagination__button--prev" />
         <ul className="pages-list">
           {mapPages(allPages)}
         </ul>
-        <button type="button" onClick={onNextPage}>next</button>
-        <button type="button" onClick={onLastPage}>end</button>
+        <button type="button" aria-label="Next page" onClick={onNextPage} className="pagination__button pagination__button--next" />
+        <button type="button" aria-label="Last page" onClick={onLastPage} className="pagination__button pagination__button--last" />
       </div>
       <Select
+        isSearchable={false}
         options={options}
+        styles={selectCustomStyles}
         defaultValue={options[0]}
         onChange={onUpdateCardsPerPage}
       />

@@ -11,7 +11,7 @@ const AddButton = ({ isItemInBasket, addPhone, ...props }) => (
     <span className="product-card__basket-text">
       {isItemInBasket ? '✔' : 'Add'}
     </span>
-    <BasketProductButtonIcon {...props}/>
+    <BasketProductButtonIcon {...props} />
   </button>
 );
 

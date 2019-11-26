@@ -18,8 +18,7 @@ const Basket = ({ ...props }) => {
         basketWidth="21px"
         basketHeight="21px"
       />
-
-      <ProductList {...props} />
+      {switchBasketVisibility && <ProductList {...props} />}
     </section>
   );
 };

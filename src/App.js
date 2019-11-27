@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
 import './App.css';
 
-import { getAll, getById } from './api/phone';
-import { SORT_BY_ALPHA } from './constants';
+import React, { Component } from 'react';
 
 import Basket from './components/Basket/Basket';
 import Filter from './components/Filter/Filter';
 import Catalog from './components/Catalog/Catalog';
 // import Viewer from './components/Viewer/Viewer';
+
+import { getAll, getById } from './api/phone';
+import { SORT_BY_ALPHA } from './constants';
 
 class App extends Component {
   state = {

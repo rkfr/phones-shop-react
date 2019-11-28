@@ -8,7 +8,7 @@ import Filter from './components/Filter/Filter';
 import Catalog from './components/Catalog/Catalog';
 import Phone from './components/Phone/Phone';
 
-import { getAll } from './api/phone';
+import { getAll } from './api/fetchData';
 import { SORT_BY_ALPHA } from './constants';
 
 class App extends Component {
@@ -18,14 +18,19 @@ class App extends Component {
     searchWord: '',
     sortBy: SORT_BY_ALPHA,
     showBasket: false,
-
     currentPage: 1,
     cardsPerPage: 6,
   };
 
 
   componentDidMount() {
-    this.setState({ phones: getAll() });
+    getAll()
+      .then((data) => {
+        this.setState({ phones: data });
+        return data;
+      })
+      // eslint-disable-next-line no-console
+      .catch((err) => console.error(err));
   }
 
   removeItemFromBasket = (id) => {

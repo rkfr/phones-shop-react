@@ -1,16 +1,29 @@
-import React from 'react';
+import './Phone.css';
+
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { getPhoneById } from '../../api/fetchData';
 
 const Phone = () => {
   const { phoneId } = useParams();
+  const [phoneData, setPhoneData] = useState({});
 
-  console.log(phoneId);
 
+  useEffect(() => {
+    getPhoneById(phoneId)
+      .then((data) => {
+        setPhoneData(data);
+        return data;
+      })
+      // eslint-disable-next-line no-console
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <>
       <div>
-Phone:
+        Phone:
+        {`${phoneData.name}`}
         {phoneId}
       </div>
       <Link to="/">Catalog</Link>

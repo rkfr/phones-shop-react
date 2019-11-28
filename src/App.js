@@ -1,19 +1,19 @@
 import './App.css';
 
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import Basket from './components/Basket/Basket';
 import Filter from './components/Filter/Filter';
 import Catalog from './components/Catalog/Catalog';
-// import Viewer from './components/Viewer/Viewer';
+import Phone from './components/Phone/Phone';
 
-import { getAll, getById } from './api/phone';
+import { getAll } from './api/phone';
 import { SORT_BY_ALPHA } from './constants';
 
 class App extends Component {
   state = {
     phones: [],
-    // selectedPhone: null,
     basketItems: [],
     searchWord: '',
     sortBy: SORT_BY_ALPHA,
@@ -47,17 +47,7 @@ class App extends Component {
 
   setSortedCatalog = (phones) => this.setState({ phones });
 
-  onBack = () => this.setState({ selectedPhone: null });
-
   setSearchWord = (searchWord) => this.setState({ searchWord });
-
-  // onPhoneSelected = (phoneId) => {
-  //   const { phones } = this.state;
-
-  //   this.setState({
-  //     selectedPhone: getById(phones, phoneId),
-  //   });
-  // }
 
   toggleBodyOverflow = () => {
     const { showBasket } = this.state;
@@ -123,33 +113,25 @@ class App extends Component {
           </div>
         </header>
         <main className="main container">
-          {/* { selectedPhone ? (
-              <Viewer
-                phone={selectedPhone}
-                addToBasket={this.addToBasket}
-                onBack={this.onBack}
-              />
-            ) : (
+          <Switch>
+            <Route path="/:phoneId">
+              <Phone />
+            </Route>
+            <Route path="/">
               <Catalog
                 phones={phones}
                 onPhoneSelected={this.onPhoneSelected}
                 addToBasket={this.addToBasket}
                 sortBy={sortBy}
                 searchWord={searchWord}
+                basketItems={basketItems}
+                cardsPerPage={cardsPerPage}
+                currentPage={currentPage}
+                updateCurrentPage={this.updateCurrentPage}
+                updateCardsPerPage={this.updateCardsPerPage}
               />
-            )} */}
-          <Catalog
-            phones={phones}
-            onPhoneSelected={this.onPhoneSelected}
-            addToBasket={this.addToBasket}
-            sortBy={sortBy}
-            searchWord={searchWord}
-            basketItems={basketItems}
-            cardsPerPage={cardsPerPage}
-            currentPage={currentPage}
-            updateCurrentPage={this.updateCurrentPage}
-            updateCardsPerPage={this.updateCardsPerPage}
-          />
+            </Route>
+          </Switch>
         </main>
       </div>
     );

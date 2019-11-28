@@ -7,6 +7,7 @@ const Pagination = ({
   currentPage, allPages, updateCurrentPage, updateCardsPerPage,
 }) => {
   const options = [
+    { value: 3, label: 3 },
     { value: 6, label: 6 },
     { value: 9, label: 9 },
   ];
@@ -45,7 +46,7 @@ const Pagination = ({
     updateCurrentPage(1);
   };
 
-  const restPages = (pages) => (
+  const renderСollapsePageItems = (pages) => (
     <>
       {currentPage === pages && (
         <>
@@ -63,7 +64,7 @@ const Pagination = ({
     </>
   );
 
-  const mapPages = (pages) => new Array(pages).fill(0).map((_, i) => {
+  const renderPageItems = (pages) => new Array(pages).fill(0).map((_, i) => {
     const page = i + 1;
 
     return (
@@ -82,7 +83,7 @@ const Pagination = ({
         <button type="button" aria-label="First page" onClick={onFirstPage} className="pagination__button pagination__button--first" />
         <button type="button" aria-label="Previous page" onClick={onPrevPage} className="pagination__button pagination__button--prev" />
         <ul className="pages-list">
-          {(allPages > 6) ? restPages(allPages) : mapPages(allPages)}
+          {(allPages > 6) ? renderСollapsePageItems(allPages) : renderPageItems(allPages)}
         </ul>
         <button type="button" aria-label="Next page" onClick={onNextPage} className="pagination__button pagination__button--next" />
         <button type="button" aria-label="Last page" onClick={onLastPage} className="pagination__button pagination__button--last" />
@@ -91,7 +92,7 @@ const Pagination = ({
         isSearchable={false}
         options={options}
         styles={selectCustomStyles}
-        defaultValue={options[0]}
+        defaultValue={options[1]}
         onChange={onUpdateCardsPerPage}
       />
     </div>

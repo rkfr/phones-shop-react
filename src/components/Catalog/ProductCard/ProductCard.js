@@ -1,10 +1,13 @@
 import './ProductCard.css';
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AddButton from './AddButton/AddButton';
 
 const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
-  const { imageUrl, name, snippet } = phone;
+  const {
+    imageUrl, name, snippet, id,
+  } = phone;
 
   const addPhone = () => addToBasket(phone);
 
@@ -29,7 +32,9 @@ const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
           basketHeight="25px"
           basketColor="#fff"
         />
-        <button className="product-card__show-button" type="button">Show</button>
+        <Link to={`/${id}`}>
+          <div className="product-card__show-button" type="button">Show</div>
+        </Link>
       </div>
     </li>
   );

@@ -1,0 +1,9 @@
+.specs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.specs__item {
+    flex-basis: 11%;
+}

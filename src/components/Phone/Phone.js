@@ -34,7 +34,7 @@ const Phone = () => {
 
   return (
     <article className="phone">
-      <Link to="/">Catalog</Link>
+      <Link to="/" className="back" title="Back to catalog" />
       {!!phoneData.name && (
       <>
         <div className="previev">

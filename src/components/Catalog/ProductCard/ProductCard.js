@@ -32,8 +32,8 @@ const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
           basketHeight="25px"
           basketColor="#fff"
         />
-        <Link to={`/${id}`}>
-          <div className="product-card__show-button" type="button">Show</div>
+        <Link className="product-card__show-button" to={`/${id}`}>
+          Show
         </Link>
       </div>
     </li>

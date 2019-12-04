@@ -71,6 +71,12 @@
   outline: 0;
 }
 
+.product-card__show-button {
+  background-color: #808080;
+  color: #fff;
+  line-height: 40px;
+}
+
 .product-card__basket-text,
 .product-card__show-button {
   font-size: 1rem;
@@ -83,4 +89,26 @@
   height: 40px;
   cursor: pointer;
   border-radius: 20px;
+}
+
+.back {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+.back::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  border-left: 3px solid #3e4144;
+  border-bottom: 3px solid #3e4144;
+  width: 20px;
+  height: 20px;
+  transform: translate(-38%, -50%) rotate(45deg);
+}
+.back:hover {
+  content: 'Back to catalog';
 }

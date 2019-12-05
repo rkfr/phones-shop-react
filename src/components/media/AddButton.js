@@ -1,5 +1,5 @@
 import React from 'react';
-import BasketProductButtonIcon from '../../../media/BasketProductButtonIcon';
+import BasketProductButtonIcon from './BasketProductButtonIcon';
 
 const AddButton = ({ isItemInBasket, addPhone, ...props }) => (
   <button

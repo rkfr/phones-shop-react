@@ -2,7 +2,8 @@ import './Phone.css';
 
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getPhoneById } from '../../api/fetchData';
+import { getPhoneById } from '../../../api/fetchData';
+// import { AddButton } from '../media/AddButton';
 
 const Phone = () => {
   const { phoneId } = useParams();

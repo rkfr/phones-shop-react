@@ -2,7 +2,7 @@ import './ProductCard.css';
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AddButton from './AddButton/AddButton';
+import AddButton from '../../media/AddButton';
 
 const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
   const {

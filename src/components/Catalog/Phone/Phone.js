@@ -1,14 +1,17 @@
 import './Phone.css';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getPhoneById } from '../../../api/fetchData';
-// import { AddButton } from '../media/AddButton';
+import AddButton from '../../media/AddButton';
+import { isItemInBasket } from '../../../helpers';
 
-const Phone = () => {
+const Phone = ({ addToBasket, basketItems }) => {
   const { phoneId } = useParams();
   const [phoneData, setPhoneData] = useState({});
   const [selectedImageSrc, setSelectedImageSrc] = useState('#');
+
+  const addPhone = useCallback(() => addToBasket(phoneId), []);
 
   useEffect(() => {
     getPhoneById(phoneId)
@@ -50,6 +53,13 @@ const Phone = () => {
           <div className="description previev__item">
             <h1>{name}</h1>
             <p>{description}</p>
+            <AddButton
+              basketWidth="25px"
+              basketHeight="25px"
+              basketColor="#fff"
+              addPhone={addPhone}
+              isItemInBasket={isItemInBasket(phoneId, basketItems)}
+            />
           </div>
         </div>
         <ul className="specs">

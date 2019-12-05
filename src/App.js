@@ -39,11 +39,14 @@ class App extends Component {
     this.setState({ basketItems: oldBasketItems.filter((item) => item.id !== id) });
   }
 
-  addToBasket = (data) => {
-    const { basketItems } = this.state;
+  addToBasket = (phoneId, phone = null) => {
+    const { phones, basketItems } = this.state;
+
+    const phoneData = phone || phones.find(({ id }) => phoneId === id);
+
     const currentBasketItems = JSON.parse(JSON.stringify(basketItems));
 
-    currentBasketItems.push({ amount: 1, ...data });
+    currentBasketItems.push({ amount: 1, ...phoneData });
 
     this.setState({ basketItems: currentBasketItems });
   }
@@ -120,7 +123,10 @@ class App extends Component {
         <main className="main container">
           <Switch>
             <Route path="/:phoneId">
-              <Phone />
+              <Phone
+                addToBasket={this.addToBasket}
+                basketItems={basketItems}
+              />
             </Route>
             <Route path="/">
               <Catalog

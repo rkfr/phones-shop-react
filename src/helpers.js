@@ -25,10 +25,20 @@ export const getfilteredPhones = (phones, query) => phones.filter(
     .includes(query.toLowerCase()),
 );
 
-export const getSortedphones = (type, phones) => {
-  const phonesCopy = JSON.parse(JSON.stringify(phones));
+export const getSortedphones = () => {
+  let prevType = null;
 
-  return (type === SORT_BY_ALPHA)
-    ? sortByNewest(phonesCopy)
-    : sortByAlpha(phonesCopy);
+  return (type, phones) => {
+    if (prevType === type) {
+      return phones;
+    }
+    console.log('repeat sorting');
+    prevType = type;
+
+    const phonesCopy = JSON.parse(JSON.stringify(phones));
+
+    return (type === SORT_BY_ALPHA)
+      ? sortByNewest(phonesCopy)
+      : sortByAlpha(phonesCopy);
+  };
 };

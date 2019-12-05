@@ -1,6 +1,6 @@
 import './ProductCard.css';
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import AddButton from '../../media/AddButton';
 
@@ -9,7 +9,7 @@ const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
     imageUrl, name, snippet, id,
   } = phone;
 
-  const addPhone = () => addToBasket(phone);
+  const addPhone = useCallback(() => addToBasket(id, phone), []);
 
   return (
     <li className="product-card">

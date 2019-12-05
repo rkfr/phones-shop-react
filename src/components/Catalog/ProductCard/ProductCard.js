@@ -13,7 +13,7 @@ const ProductCard = ({
 
   const addPhone = useCallback(() => addToBasket(id, phone), []);
 
-  const switchVisibility = useCallback(() => setPaginationVisibility(true), []);
+  const switchPaginationVisibility = useCallback(() => setPaginationVisibility(true), []);
 
   return (
     <li className="product-card">
@@ -36,7 +36,7 @@ const ProductCard = ({
           basketHeight="25px"
           basketColor="#fff"
         />
-        <Link className="product-card__show-button" to={`/${id}`} onClick={switchVisibility}>
+        <Link className="product-card__show-button" to={`/${id}`} onClick={switchPaginationVisibility}>
           Show
         </Link>
       </div>

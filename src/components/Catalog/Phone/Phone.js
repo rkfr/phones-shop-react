@@ -6,12 +6,14 @@ import { getPhoneById } from '../../../api/fetchData';
 import AddButton from '../../media/AddButton';
 import { isItemInBasket } from '../../../helpers';
 
-const Phone = ({ addToBasket, basketItems }) => {
+const Phone = ({ addToBasket, basketItems, setPaginationVisibility }) => {
   const { phoneId } = useParams();
   const [phoneData, setPhoneData] = useState({});
   const [selectedImageSrc, setSelectedImageSrc] = useState('#');
 
   const addPhone = useCallback(() => addToBasket(phoneId), []);
+
+  const switchPaginationVisibility = useCallback(() => setPaginationVisibility(false), []);
 
   useEffect(() => {
     getPhoneById(phoneId)
@@ -38,7 +40,7 @@ const Phone = ({ addToBasket, basketItems }) => {
 
   return (
     <article className="phone">
-      <Link to="/" className="back" title="Back to catalog" />
+      <Link to="/" className="back" title="Back to catalog" onClick={switchPaginationVisibility} />
       {!!phoneData.name && (
       <>
         <div className="previev">

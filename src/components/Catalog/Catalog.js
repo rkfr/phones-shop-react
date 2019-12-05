@@ -39,6 +39,7 @@ const Catalog = ({
           <Phone
             addToBasket={addToBasket}
             basketItems={basketItems}
+            setPaginationVisibility={setPaginationVisibility}
           />
         </Route>
         <Route path="/">

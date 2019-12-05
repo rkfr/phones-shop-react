@@ -4,7 +4,7 @@ import React from 'react';
 import Select from 'react-select';
 
 const Pagination = ({
-  currentPage, allPages, updateCurrentPage, updateCardsPerPage,
+  currentPage, allPages, updateCurrentPage, updateCardsPerPage, isPaginationHidden,
 }) => {
   const options = [
     { value: 3, label: 3 },
@@ -78,7 +78,7 @@ const Pagination = ({
   });
 
   return (
-    <div className="pagination">
+    <div className={`pagination ${isPaginationHidden ? 'pagination--hidden' : ''}`}>
       <div className="pagination__controls">
         <button type="button" aria-label="First page" onClick={onFirstPage} className="pagination__button pagination__button--first" />
         <button type="button" aria-label="Previous page" onClick={onPrevPage} className="pagination__button pagination__button--prev" />

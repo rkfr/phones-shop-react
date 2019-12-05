@@ -25,6 +25,7 @@ module.exports = {
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "react/state-in-constructor": [0, 'never'],
     "react/prop-types": 0,
+    "react/jsx-props-no-spreading": 0
   },
   parser: "babel-eslint",
 };

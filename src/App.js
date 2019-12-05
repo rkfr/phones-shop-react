@@ -1,12 +1,10 @@
 import './App.css';
 
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 
 import Basket from './components/Basket/Basket';
 import Filter from './components/Filter/Filter';
 import Catalog from './components/Catalog/Catalog';
-import Phone from './components/Catalog/Phone/Phone';
 
 import { getAll } from './api/fetchData';
 import { SORT_BY_ALPHA } from './constants';
@@ -121,28 +119,18 @@ class App extends Component {
           </div>
         </header>
         <main className="main container">
-          <Switch>
-            <Route path="/:phoneId">
-              <Phone
-                addToBasket={this.addToBasket}
-                basketItems={basketItems}
-              />
-            </Route>
-            <Route path="/">
-              <Catalog
-                phones={phones}
-                onPhoneSelected={this.onPhoneSelected}
-                addToBasket={this.addToBasket}
-                sortBy={sortBy}
-                searchWord={searchWord}
-                basketItems={basketItems}
-                cardsPerPage={cardsPerPage}
-                currentPage={currentPage}
-                updateCurrentPage={this.updateCurrentPage}
-                updateCardsPerPage={this.updateCardsPerPage}
-              />
-            </Route>
-          </Switch>
+          <Catalog
+            phones={phones}
+            onPhoneSelected={this.onPhoneSelected}
+            addToBasket={this.addToBasket}
+            sortBy={sortBy}
+            searchWord={searchWord}
+            basketItems={basketItems}
+            cardsPerPage={cardsPerPage}
+            currentPage={currentPage}
+            updateCurrentPage={this.updateCurrentPage}
+            updateCardsPerPage={this.updateCardsPerPage}
+          />
         </main>
       </div>
     );

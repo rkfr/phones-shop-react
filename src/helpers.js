@@ -32,7 +32,7 @@ export const getSortedphones = () => {
     if (prevType === type) {
       return phones;
     }
-    console.log('repeat sorting');
+
     prevType = type;
 
     const phonesCopy = JSON.parse(JSON.stringify(phones));

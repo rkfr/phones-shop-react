@@ -4,12 +4,16 @@ import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import AddButton from '../../media/AddButton';
 
-const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
+const ProductCard = ({
+  phone, addToBasket, isItemInBasket, setPaginationVisibility,
+}) => {
   const {
     imageUrl, name, snippet, id,
   } = phone;
 
   const addPhone = useCallback(() => addToBasket(id, phone), []);
+
+  const switchVisibility = useCallback(() => setPaginationVisibility(true), []);
 
   return (
     <li className="product-card">
@@ -32,7 +36,7 @@ const ProductCard = ({ phone, addToBasket, isItemInBasket }) => {
           basketHeight="25px"
           basketColor="#fff"
         />
-        <Link className="product-card__show-button" to={`/${id}`}>
+        <Link className="product-card__show-button" to={`/${id}`} onClick={switchVisibility}>
           Show
         </Link>
       </div>

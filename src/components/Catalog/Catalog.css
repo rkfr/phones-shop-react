@@ -1,4 +1,15 @@
 .catalog {
     display: flex;
     flex-wrap: wrap;
+    transition: 1s ease-in-out;
+    animation: show 3s;
+  }
+
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }

@@ -49,6 +49,10 @@ class App extends Component {
     this.setState({ basketItems: currentBasketItems });
   }
 
+  clearBasket = () => {
+    this.setState({ basketItems: [] });
+  }
+
   setSortType = (sortType) => this.setState({ sortBy: sortType });
 
   setSortedCatalog = (phones) => this.setState({ phones });
@@ -115,6 +119,7 @@ class App extends Component {
               basketItems={basketItems}
               removeItemFromBasket={this.removeItemFromBasket}
               updateBasketItemAmount={this.updateBasketItemAmount}
+              clearBasket={this.clearBasket}
             />
           </div>
         </header>
